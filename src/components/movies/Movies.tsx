@@ -14,7 +14,7 @@ const Movies = ({ movieNow, type }: Props) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="z-10 bg-[#334155] hover:scale-[1.02] text-white px-0 rounded-md shadow-md  hover:shadow-xl hover:border hover:border-teal-400   transition-all overflow-hidden "
+      className="z-10 bg-[#334155] hover:scale-[1.02] text-white px-0 rounded-md shadow-md  hover:shadow-xl hover:border hover:border-teal-400 transition-all overflow-hidden"
     >
       <Link href={`/detail/${movieNow.id + type}`} className="">
         <div className="flex items-center justify-between relative ">

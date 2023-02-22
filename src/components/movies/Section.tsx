@@ -36,7 +36,7 @@ const Section = ({
       <motion.div
         initial={{ x: 0, opacity: 0 }}
         whileInView={{ x: 60, opacity: 1 }}
-        className="px-10 py-8"
+        className="md:px-10 py-8"
       >
         <Heading>Popular movies</Heading>
       </motion.div>

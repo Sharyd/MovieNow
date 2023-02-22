@@ -15,7 +15,7 @@ const Trailer = ({ trailer }: Props) => {
   const [muted, setMuted] = useState(true);
   console.log(trailer);
   return (
-    <div className="relative pt-[56.25%] w-[350px] sm:w-[400px] md:w-[600px] lg:w-[800px]  ">
+    <div className="relative pt-[56.25%] w-[350px] sm:w-[400px] md:w-[600px] lg:w-[800px]">
       {trailer === undefined ? (
         <p className="text-3xl text-gray-900 w-max absolute top-1/2 left-1/2 -translate-x-1/2">
           Video not found
