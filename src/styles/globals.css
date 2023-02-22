@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .mainColor {
+    @apply bg-[#1f2937];
+  }
+  .secondaryColor {
+    @apply bg-[#334155];
+  }
+  .highlightColor {
+    @apply bg-gradient-to-br from-blue-600 to-teal-500;
+  }
+  .textWhiteColor {
+    @apply text-white/90;
+  }
+  .toCenter {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+}

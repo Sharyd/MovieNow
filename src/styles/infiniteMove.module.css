@@ -1,0 +1,22 @@
+.infinite-move {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 23s linear infinite;
+  width: 100%;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .infinite-move {
+    width: 180%;
+  }
+}
