@@ -1,5 +1,4 @@
-import { BsPlayFill } from 'react-icons/bs';
-import { AiFillStar, AiOutlinePlus } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Movie } from 'types';

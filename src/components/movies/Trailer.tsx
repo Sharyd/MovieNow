@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { FaPlay } from 'react-icons/fa';
 import ReactPlayer from 'react-player';
 import {
-  CheckIcon,
   PlusIcon,
   ThumbUpIcon,
   VolumeOffIcon,
   VolumeUpIcon,
-  XIcon,
 } from '@heroicons/react/outline';
 interface Props {
   trailer: string;

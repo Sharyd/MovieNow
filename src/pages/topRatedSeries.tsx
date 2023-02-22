@@ -1,11 +1,9 @@
 import Head from 'next/head';
 import { fetchTopRatedTV, Identificator } from '@/utils/requests';
-import Movies from '@/components/movies/Movies';
 
-import Heading from '@/components/ui/Heading';
-import React, { Fragment, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import useInfinityFetch from '@/hooks/useInfinityFetch';
-import { Movie } from 'types';
+
 import Section from '@/components/movies/Section';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 

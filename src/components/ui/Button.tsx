@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode, ReactPropTypes } from 'react';
+import React, { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;

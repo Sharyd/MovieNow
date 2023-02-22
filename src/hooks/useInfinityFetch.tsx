@@ -44,7 +44,7 @@ const useInfinityFetch = (
     return () => {
       observer.unobserve(el);
     };
-  }, [loadMoreButtonRef?.current, hasNextPage]);
+  }, [loadMoreButtonRef.current, hasNextPage]);
 
   return {
     fetchNextPage,

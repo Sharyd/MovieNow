@@ -2,10 +2,9 @@ import Button from '@/components/ui/Button';
 import Heading from '@/components/ui/Heading';
 import { fetchMovieDetail, fetchTVDetail } from '@/utils/requests';
 import router, { useRouter } from 'next/router';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { AiFillStar, AiFillHeart } from 'react-icons/ai';
-import { Genre, Movie } from 'types';
 import { FaPlay } from 'react-icons/fa';
 import classes from '../../styles/infiniteMove.module.css';
 import Quote from '@/components/ui/Quote';
@@ -15,7 +14,7 @@ import Modal from '@/components/ui/Modal';
 import { AnimatePresence, motion } from 'framer-motion';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
-const movieDetail = () => {
+const MovieDetail = () => {
   const [trailer, setTrailer] = useState('');
   const { setOpenModal, openModal } = useModal();
   const {
@@ -192,4 +191,4 @@ const movieDetail = () => {
   );
 };
 
-export default movieDetail;
+export default MovieDetail;

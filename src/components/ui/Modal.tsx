@@ -1,6 +1,6 @@
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import { AnimatePresence, motion, spring } from 'framer-motion';
+import { motion } from 'framer-motion';
 interface Props {
   children: ReactNode;
   setOpenModal?: Dispatch<SetStateAction<boolean>> | undefined;

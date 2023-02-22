@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import { fetchQueryMovies } from '@/utils/requests';
 import Movies from '@/components/movies/Movies';
-import { Movie, ResultsMovies } from 'types';
+import { Movie } from 'types';
 import Heading from '@/components/ui/Heading';
-import React, { Fragment, useEffect, useRef } from 'react';
-import useInfinityFetch from '@/hooks/useInfinityFetch';
+import React, { useEffect } from 'react';
+
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';

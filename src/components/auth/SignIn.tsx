@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../ui/Button';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';

@@ -5,7 +5,6 @@ import {
   Identificator,
 } from '@/utils/requests';
 import Movies from '@/components/movies/Movies';
-
 import Heading from '@/components/ui/Heading';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import useInfinityFetch from '@/hooks/useInfinityFetch';
