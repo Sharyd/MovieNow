@@ -1,4 +1,5 @@
 import { genresMovies, genresTVseries } from '@/utils/dataGenres';
+import { Identificator } from '@/utils/requests';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
@@ -7,7 +8,7 @@ interface genreType {
   id: string | null;
 }
 interface Props {
-  type: string;
+  type: Identificator;
 }
 
 const Options = ({ type }: Props) => {

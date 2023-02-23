@@ -31,6 +31,7 @@ const Section = ({
   loadMoreButtonRef,
   type,
 }: Props) => {
+  console.log(type);
   return (
     <section className="z-10">
       <motion.div
@@ -38,7 +39,7 @@ const Section = ({
         whileInView={{ x: 60, opacity: 1 }}
         className="md:px-10 py-8"
       >
-        <Heading>Popular movies</Heading>
+        <Heading>{type === 'movie' ? 'Movies' : 'TV Shows'}</Heading>
       </motion.div>
       <div className="flex flex-wrap gap-10 items-center justify-center">
         {data?.pages.map((page: any, idx) => (

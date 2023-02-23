@@ -39,9 +39,7 @@ export const fetchNowPlayingMovies = async ({
 export const fetchTopRatedMovies = async ({ pageParam = 1 }): Promise<any> => {
   return axios.get(requests.topRated + pageParam);
 };
-export const fetchNewMovies = async ({ pageParam = 1 }): Promise<any> => {
-  return axios.get(requests.nowPlaying + pageParam);
-};
+
 export const fetchQueryMovies = async (
   query: string | string[] | undefined
 ): Promise<any> => {
