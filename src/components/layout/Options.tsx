@@ -3,10 +3,6 @@ import { Identificator } from '@/utils/requests';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
-interface genreType {
-  name: string;
-  id: string | null;
-}
 interface Props {
   type: Identificator;
 }
@@ -32,7 +28,7 @@ const Options = ({ type }: Props) => {
       <select
         id="countries"
         onChange={e => setGenre(e.target.value)}
-        className="secondaryColor border border-gray-300 textWhiteColor text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+        className="cursor-pointer secondaryColor hover:secondaryColor  border border-gray-300 textWhiteColor text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
       >
         <option selected>Choose a genre</option>
         {(type === 'movie' ? genresMovies : genresTVseries).map(

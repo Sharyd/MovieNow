@@ -6,16 +6,16 @@ import {
   InfiniteData,
   InfiniteQueryObserverResult,
 } from 'react-query';
-import { Movie, PageType } from 'types';
+import { Movie, infiniteType } from 'types';
 import Heading from '../ui/Heading';
 import Movies from './Movies';
 
 interface Props {
   fetchNextPage: (
     options?: FetchNextPageOptions | undefined
-  ) => Promise<InfiniteQueryObserverResult<PageType, Error>>;
+  ) => Promise<InfiniteQueryObserverResult<infiniteType, Error>>;
   hasNextPage: boolean | undefined;
-  data: InfiniteData<PageType> | undefined;
+  data: InfiniteData<infiniteType> | undefined;
   isFetching: boolean;
   isFetchingNextPage: boolean;
   loadMoreButtonRef: React.RefObject<HTMLButtonElement>;

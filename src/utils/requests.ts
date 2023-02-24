@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { PageType, QueryKeyType, ResultsMovies } from 'types';
+import { QueryFunctionContext } from 'react-query';
+import {
+  QueryKeyType,
+  infiniteType,
+  Movie,
+  MovieDetails,
+  TvShowDetails,
+} from 'types';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -15,10 +22,14 @@ const requests = {
 };
 
 //TV SHOWS
-export const fetchPopularTV = async ({ pageParam = 1 }): Promise<any> => {
+export const fetchPopularTV = async ({
+  pageParam = 1,
+}: QueryFunctionContext): Promise<infiniteType> => {
   return axios.get(requests.popularTV + pageParam);
 };
-export const fetchTopRatedTV = async ({ pageParam = 1 }): Promise<any> => {
+export const fetchTopRatedTV = async ({
+  pageParam = 1,
+}: QueryFunctionContext): Promise<infiniteType> => {
   return axios.get(requests.topRatedTV + pageParam);
 };
 
@@ -33,10 +44,12 @@ export const fetchTVDetail = async ({
 //MOVIES
 export const fetchNowPlayingMovies = async ({
   pageParam = 1,
-}): Promise<any> => {
+}: QueryFunctionContext): Promise<infiniteType> => {
   return axios.get(requests.nowPlaying + pageParam);
 };
-export const fetchTopRatedMovies = async ({ pageParam = 1 }): Promise<any> => {
+export const fetchTopRatedMovies = async ({
+  pageParam = 1,
+}: QueryFunctionContext): Promise<infiniteType> => {
   return axios.get(requests.topRated + pageParam);
 };
 
@@ -49,7 +62,7 @@ export const fetchQueryMovies = async (
 export const fetchByGenreOfMovie = async (
   pageParam: number | undefined,
   query: string | string[] | undefined
-): Promise<ResultsMovies> => {
+): Promise<infiniteType> => {
   return axios.get(
     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${query}&page=${pageParam}`
   );
@@ -57,7 +70,7 @@ export const fetchByGenreOfMovie = async (
 export const fetchByGenreOfTV = async (
   pageParam: number | undefined,
   query: string | string[] | undefined
-): Promise<any> => {
+): Promise<infiniteType> => {
   return axios.get(
     `${BASE_URL}/discover/tv?api_key=${API_KEY}&language=en-US&with_genres=${query}&page=${pageParam}`
   );
@@ -65,7 +78,7 @@ export const fetchByGenreOfTV = async (
 
 export const fetchMovieDetail = async ({
   queryKey,
-}: QueryKeyType): Promise<any> => {
+}: QueryKeyType): Promise<MovieDetails & TvShowDetails> => {
   const [_, id] = queryKey;
 
   return axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`);

@@ -20,7 +20,7 @@ export default function Genres() {
   const {
     query: { genres },
   } = useRouter();
-  console.log(genres);
+
   const {
     refetch,
     fetchNextPage,
@@ -73,15 +73,15 @@ export default function Genres() {
         <div className="flex flex-wrap gap-10 items-center justify-center">
           {data?.pages.map((page, idx) => (
             <Fragment key={idx}>
-              {page.data.results.map((movieNow: Movie) => (
+              {page.data.results.map(movie => (
                 <Movies
                   type={
                     genres && genres[1]?.includes(movieType)
                       ? movieType
                       : tvShowType
                   }
-                  key={movieNow.id}
-                  movieNow={movieNow}
+                  key={movie.id}
+                  movieNow={movie}
                 />
               ))}
             </Fragment>

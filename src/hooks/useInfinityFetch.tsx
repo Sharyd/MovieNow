@@ -1,11 +1,11 @@
 import React, { RefObject, useEffect } from 'react';
 import { QueryFunction, QueryKey, useInfiniteQuery } from 'react-query';
-import { PageType, ResultsMovies } from 'types';
-
+import { infiniteType } from 'types';
+import { Movie } from '../../types';
 const useInfinityFetch = (
   queryString: string,
   loadMoreButtonRef: RefObject<HTMLButtonElement>,
-  fetchFunction: QueryFunction<ResultsMovies, QueryKey>
+  fetchFunction: QueryFunction<infiniteType, QueryKey>
 ) => {
   const {
     refetch,
@@ -17,9 +17,10 @@ const useInfinityFetch = (
     hasNextPage,
     isFetching,
     isFetchingNextPage,
-  } = useInfiniteQuery<any, Error>([queryString], fetchFunction, {
+  } = useInfiniteQuery<infiniteType, Error>([queryString], fetchFunction, {
     getNextPageParam: lastPage => {
-      const { page, total_pages: totalPages } = lastPage?.data;
+      if (!lastPage.data) return;
+      const { page, total_pages: totalPages } = lastPage.data;
       return page < totalPages ? page + 1 : undefined;
     },
   });

@@ -13,6 +13,7 @@ import Trailer from '@/components/movies/Trailer';
 import Modal from '@/components/ui/Modal';
 import { AnimatePresence, motion } from 'framer-motion';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { MovieDetails, TvShowDetails } from 'types';
 
 const MovieDetail = () => {
   const [trailer, setTrailer] = useState('');
@@ -30,14 +31,14 @@ const MovieDetail = () => {
     ['movie', detail],
     detail?.includes('movie') ? fetchMovieDetail : fetchTVDetail
   );
-
+  console.log(movie);
   useEffect(() => {
     if (!movie) return;
 
     async function fetchMovie() {
       const dataTrailer = await fetch(
         `https://api.themoviedb.org/3/${
-          movie.data?.media_type === 'tv' ? 'tv' : 'movie'
+          movie?.data?.media_type === 'tv' ? 'tv' : 'movie'
         }/${detail}?api_key=${
           process.env.NEXT_PUBLIC_API_KEY
         }&language=en-US&append_to_response=videos`
@@ -63,26 +64,26 @@ const MovieDetail = () => {
   return (
     <div className="z-10 mt-10 md:w-[90%] m-auto text-white/90">
       <div className="flex flex-col gap-6 md:flex-row items-start md:items-center justify-between text-lg">
-        <Heading>{movie.data.title}</Heading>
+        <Heading>{movie?.data.title}</Heading>
         <div className="flex justify-center flex-col m-auto md:flex-row md:m-0 items-center gap-10">
           <div className="flex justify-center items-center flex-col">
             <p className="font-semibold">Rating</p>
             <div className="flex justify-center items-center gap-2">
               <AiFillStar className="w-6 h-6 text-yellow-500" />
-              <span>{movie.data.vote_average.toFixed(2)} / 10</span>
+              <span>{movie?.data.vote_average.toFixed(2)} / 10</span>
             </div>
           </div>
           <div className="flex justify-center items-center flex-col">
             <p className="font-semibold">Popularity</p>
             <div className="flex justify-center items-center gap-2">
               <AiFillHeart className="w-6 h-6 text-red-500" />
-              <span>{Math.round(movie.data.popularity)} (likes)</span>
+              <span>{Math.round(movie?.data.popularity)} (likes)</span>
             </div>
           </div>
           <div>
             <p className="flex flex-col items-center font-semibold">
               Original language{' '}
-              <span className="uppercase">{movie.data.original_language}</span>{' '}
+              <span className="uppercase">{movie?.data.original_language}</span>{' '}
             </p>
           </div>
         </div>
@@ -92,9 +93,9 @@ const MovieDetail = () => {
         whileInView={{ opacity: 1 }}
         className="py-6 brightness-[0.8]"
         src={`https://image.tmdb.org/t/p/original${
-          movie.data.backdrop_path || movie.data.poster_path
+          movie?.data.backdrop_path || movie?.data.poster_path
         }`}
-        alt={movie.data.title}
+        alt={movie?.data.title}
       />
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-6">
@@ -119,11 +120,11 @@ const MovieDetail = () => {
             </div>
             <div className="flex flex-col items-center p-2">
               <p className="font-semibold">Release date</p>
-              <time>{movie.data.release_date}</time>
+              <time>{movie?.data.release_date}</time>
             </div>
           </div>
           <p className="font-semibold">Overview</p>
-          <p>{movie.data.overview}</p>
+          <p>{movie?.data.overview}</p>
         </div>
         <div className="flex flex-col">
           <p className="font-semibold">Trailer</p>
@@ -136,14 +137,14 @@ const MovieDetail = () => {
               <img
                 className="py-6 group transition-all"
                 src={`https://image.tmdb.org/t/p/w400${
-                  movie.data.backdrop_path || movie.data.poster_path
+                  movie?.data.backdrop_path || movie?.data.poster_path
                 }`}
-                alt={movie.data.title}
+                alt={movie?.data.title}
               />
             </div>
             <blockquote className="text-xl italic font-semibold text-gray-400 ">
               <Quote />
-              <p>{movie.data.tagline}</p>
+              <p>{movie?.data.tagline}</p>
             </blockquote>
           </div>
         </div>
@@ -152,7 +153,7 @@ const MovieDetail = () => {
           <div
             className={`bottom-0 left-0 absolute ${classes['infinite-move']} flex gap-6 mt-10 justify-between`}
           >
-            {movie.data.production_companies.map(
+            {movie?.data.production_companies.map(
               (company: {
                 id: number;
                 logo_path: string;

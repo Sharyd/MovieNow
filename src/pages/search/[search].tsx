@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { fetchQueryMovies } from '@/utils/requests';
 import Movies from '@/components/movies/Movies';
-import { Movie } from 'types';
+import { infiniteType, Movie, TvShowResult } from 'types';
 import Heading from '@/components/ui/Heading';
 import React, { useEffect } from 'react';
 
@@ -14,16 +14,18 @@ export default function Search() {
     query: { search },
   } = useRouter();
 
-  const { data, isLoading, isError, error, refetch } = useQuery<any, Error>(
-    ['searchedMovies'],
-    () => fetchQueryMovies(search),
-    {
-      select: data => {
-        const transformedData = data.data?.results.map((data: Movie) => data);
-        return transformedData;
-      },
-    }
-  );
+  const { data, isLoading, isError, error, refetch } = useQuery<
+    Movie[] & TvShowResult[],
+    Error
+  >(['searchedMovies'], () => fetchQueryMovies(search), {
+    select: (data: any) => {
+      console.log(data);
+      const transformedData = data.data?.results.map(
+        (data: Movie | TvShowResult) => data
+      );
+      return transformedData;
+    },
+  });
 
   useEffect(() => {
     if (search) refetch();
@@ -50,7 +52,7 @@ export default function Search() {
           <Heading>Searched movies</Heading>
         </div>
         <div className="flex flex-wrap gap-10 items-center justify-center">
-          {data?.map((movieNow: Movie) => (
+          {data?.map(movieNow => (
             <Movies type={'movie'} key={movieNow.id} movieNow={movieNow} />
           ))}
 
