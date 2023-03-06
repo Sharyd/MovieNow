@@ -1,7 +1,7 @@
 import React, { RefObject, useEffect } from 'react';
 import { QueryFunction, QueryKey, useInfiniteQuery } from 'react-query';
 import { infiniteType } from 'types';
-import { Movie } from '../../types';
+
 const useInfinityFetch = (
   queryString: string,
   loadMoreButtonRef: RefObject<HTMLButtonElement>,
